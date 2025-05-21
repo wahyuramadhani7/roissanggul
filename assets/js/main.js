@@ -1,4 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Hamburger menu functionality
+    const hamburger = document.querySelector('.hamburger-icon');
+    const nav = document.querySelector('.nav-menu');
+    
+    hamburger.addEventListener('click', function() {
+        hamburger.classList.toggle('active');
+        nav.classList.toggle('active');
+    });
+    
+    // Close menu when clicking on a menu item
+    const menuItems = document.querySelectorAll('.nav-menu a');
+    menuItems.forEach(item => {
+        item.addEventListener('click', function() {
+            hamburger.classList.remove('active');
+            nav.classList.remove('active');
+        });
+    });
+
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
@@ -18,13 +36,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-
+    
     // Update active menu item on scroll
     window.addEventListener('scroll', () => {
         const sections = document.querySelectorAll('section, footer');
         const navLinks = document.querySelectorAll('nav ul li a');
         let current = '';
-
+        
         sections.forEach(section => {
             const sectionTop = section.offsetTop - 100;
             const sectionHeight = section.clientHeight;
@@ -32,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 current = '#' + section.getAttribute('id');
             }
         });
-
+        
         navLinks.forEach(link => {
             link.classList.remove('active');
             if (link.getAttribute('href').includes(current)) {
