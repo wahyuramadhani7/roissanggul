@@ -373,3 +373,27 @@ footer {
 .footer-social .social-icon:hover {
     color: #d4a373;
 }
+
+.social-icons {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.social-icon i,
+.shopee-icon {
+    font-size: 24px;
+    color: #fff;
+    transition: transform 0.3s ease;
+}
+
+.social-icon:hover i,
+.social-icon:hover .shopee-icon {
+    transform: scale(1.2);
+}
+
+.shopee-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
