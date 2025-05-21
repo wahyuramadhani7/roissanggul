@@ -4,75 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sanggul Tradisional - UMKM Produk Kecantikan Tradisional</title>
-    <link rel="stylesheet" href="assets/style.css">
-    <link rel="stylesheet" href="assets/responsive.css">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
 <body>
     <!-- Header Section -->
     <header>
         <div class="container">
             <div class="logo">
+                <img src="assets/images/logo.png" alt="Logo Rois Sanggul">
                 <h1>Rois Sanggul</h1>
             </div>
             <nav>
                 <ul>
-                    <li><a href="index.html" class="active">Beranda</a></li>
-                    <li><a href="pages/about.html">Tentang Kami</a></li>
-                    <li><a href="pages/products.html">Produk</a></li>
-                    <li><a href="pages/gallery.html">Galeri</a></li>
-                    <li><a href="pages/contact.html">Kontak</a></li>
+                    <li><a href="#home" class="active">Beranda</a></li>
+                    <li><a href="#products">Produk</a></li>
+                    <li><a href="#testimonials">Testimoni</a></li>
+                    <li><a href="#footer">About Us</a></li>
                 </ul>
             </nav>
-            <div class="menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
         </div>
     </header>
 
-    <!-- Hero Banner Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h2>Rois Sanggul</h2>
-                <p>Melestarikan budaya tradisional dalam sentuhan kecantikan modern</p>
-                <a href="pages/products.html" class="btn-primary">Lihat Koleksi</a>
+    <!-- Beranda Section (Hero + About Us) -->
+    <section id="home" class="hero">
+        <div class="hero-banner">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>Rois Sanggul</h2>
+                    <p>Melestarikan budaya tradisional dalam sentuhan kecantikan modern</p>
+                    <a href="pages/products.html" class="btn-primary">Lihat Koleksi</a>
+                </div>
             </div>
         </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about-preview">
-        <div class="container">
-            <div class="section-header">
-                <h2>Tentang Sanggul Tradisi</h2>
-                <p>Keindahan tradisional untuk wanita modern</p>
-            </div>
-            <div class="about-content">
-                <div class="about-image">
-                    <img src="assets/images/about/about-preview.jpg" alt="Tentang Sanggul Tradisi">
+        <div class="about-content">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Tentang Kami</h2>
+                    <p>Keindahan tradisional untuk wanita modern</p>
                 </div>
                 <div class="about-text">
-                    <h3>Warisan Budaya yang Terjaga</h3>
-                    <p>Sanggul Tradisi adalah UMKM yang berdedikasi melestarikan keindahan sanggul tradisional Indonesia. Produk kami dibuat dengan ketelitian dan kecintaan pada budaya leluhur.</p>
-                    <p>Setiap sanggul yang kami produksi dibuat dengan bahan berkualitas tinggi dan proses pembuatan yang mengutamakan keaslian tradisi.</p>
-                    <a href="pages/about.html" class="btn-secondary">Baca Selengkapnya</a>
+                    <h3>Pengenalan Rois Sanggul</h3>
+                    <p>Rois Sanggul adalah UMKM yang berdedikasi untuk melestarikan keindahan sanggul tradisional Indonesia. Didirikan dengan semangat untuk menjaga warisan budaya leluhur, kami menggabungkan keahlian tradisional dengan sentuhan modern untuk menciptakan produk yang elegan dan fungsional. Setiap sanggul dibuat dengan bahan berkualitas tinggi dan perhatian terhadap detail, memastikan keaslian dan kenyamanan bagi penggunanya.</p>
+                    <h3>Visi Kami</h3>
+                    <p>Menjadi pelopor dalam melestarikan dan mempromosikan sanggul tradisional Indonesia sebagai simbol keindahan dan identitas budaya di kancah global.</p>
+                    <h3>Misi Kami</h3>
+                    <ul>
+                        <li>Menyediakan sanggul tradisional berkualitas tinggi yang mencerminkan kekayaan budaya Indonesia.</li>
+                        <li>Mendukung pengrajin lokal dengan mempertahankan teknik tradisional dalam proses pembuatan.</li>
+                        <li>Mengintegrasikan desain modern untuk memenuhi kebutuhan wanita masa kini tanpa menghilangkan esensi budaya.</li>
+                    </ul>
+                    <h3>Tujuan Kami</h3>
+                    <p>Kami bertujuan untuk memperkenalkan keindahan sanggul tradisional kepada generasi muda, meningkatkan kesadaran akan warisan budaya Indonesia, dan memperluas pasar produk kami ke ranah internasional sambil tetap mempertahankan kualitas dan keaslian.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Featured Products Section -->
-    <section class="featured-products">
+    <section id="products" class="featured-products">
         <div class="container">
             <div class="section-header">
                 <h2>Produk Unggulan</h2>
                 <p>Koleksi sanggul terbaik kami</p>
             </div>
             <div class="product-container">
-                <div class="product-card">
+                <div class="product-card" id="sanggul-jawa">
                     <div class="product-image">
                         <img src="assets/images/products/product-1.jpg" alt="Sanggul Jawa">
                     </div>
@@ -83,7 +84,7 @@
                         <a href="pages/products.html#sanggul-jawa" class="btn-tertiary">Detail</a>
                     </div>
                 </div>
-                <div class="product-card">
+                <div class="product-card" id="sanggul-sunda">
                     <div class="product-image">
                         <img src="assets/images/products/product-2.jpg" alt="Sanggul Sunda">
                     </div>
@@ -94,7 +95,7 @@
                         <a href="pages/products.html#sanggul-sunda" class="btn-tertiary">Detail</a>
                     </div>
                 </div>
-                <div class="product-card">
+                <div class="product-card" id="sanggul-bali">
                     <div class="product-image">
                         <img src="assets/images/products/product-3.jpg" alt="Sanggul Bali">
                     </div>
@@ -107,22 +108,22 @@
                 </div>
             </div>
             <div class="view-all">
-                <a href="pages/products.html" class="btn-secondary">Lihat Semua Produk</a>
+                <a href="pages/products.html" class="btn-primary">Lihat Semua Produk</a>
             </div>
         </div>
     </section>
 
     <!-- Testimonial Section -->
-    <section class="testimonials">
+    <section id="testimonials" class="testimonials">
         <div class="container">
             <div class="section-header">
                 <h2>Testimoni Pelanggan</h2>
                 <p>Apa kata mereka tentang sanggul kami</p>
             </div>
             <div class="testimonial-slider">
-                <div class="testimonial-item">
+                <div class="testimonial-item active">
                     <div class="testimonial-content">
-                        <p>"Sanggul dari Sanggul Tradisi sangat nyaman dipakai dan tidak mudah lepas. Saya menggunakannya untuk acara pernikahan adik saya dan banyak yang memuji."</p>
+                        <p>"Sanggul dari Rois Sanggul sangat nyaman dipakai dan tidak mudah lepas. Saya menggunakannya untuk acara pernikahan adik saya dan banyak yang memuji."</p>
                     </div>
                     <div class="testimonial-author">
                         <img src="assets/images/testimonials/testimonial-1.jpg" alt="Dewi Sartika">
@@ -134,7 +135,7 @@
                 </div>
                 <div class="testimonial-item">
                     <div class="testimonial-content">
-                        <p>"Kualitas sanggulnya sangat bagus dan pengiriman cepat. Pelayanan ramah dan memuaskan. Terima kasih Sanggul Tradisi!"</p>
+                        <p>"Kualitas sanggulnya sangat bagus dan pengiriman cepat. Pelayanan ramah dan memuaskan. Terima kasih Rois Sanggul!"</p>
                     </div>
                     <div class="testimonial-author">
                         <img src="assets/images/testimonials/testimonial-2.jpg" alt="Ratna Sari">
@@ -146,7 +147,7 @@
                 </div>
                 <div class="testimonial-item">
                     <div class="testimonial-content">
-                        <p>"Saya sudah berlangganan sejak 2 tahun lalu dan belum pernah kecewa. Sanggul Tradisi benar-benar mempertahankan kualitas produknya."</p>
+                        <p>"Saya sudah berlangganan sejak 2 tahun lalu dan belum pernah kecewa. Rois Sanggul benar-benar mempertahankan kualitas produknya."</p>
                     </div>
                     <div class="testimonial-author">
                         <img src="assets/images/testimonials/testimonial-3.jpg" alt="Sri Wahyuni">
@@ -160,59 +161,47 @@
         </div>
     </section>
 
-    <!-- Call to Action -->
-    <section class="cta">
-        <div class="container">
-            <h2>Tertarik dengan produk kami?</h2>
-            <p>Hubungi kami untuk informasi pemesanan atau kunjungi galeri kami</p>
-            <div class="cta-buttons">
-                <a href="pages/contact.html" class="btn-primary">Hubungi Kami</a>
-                <a href="pages/gallery.html" class="btn-secondary">Lihat Galeri</a>
+    <!-- Footer Section -->
+<footer id="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h2>Rois Sanggul</h2>
+                <p>Melestarikan keindahan tradisional</p>
+            </div>
+            <div class="footer-links">
+                <h3>Tautan</h3>
+                <ul>
+                    <li><a href="../index.html#home">Beranda</a></li>
+                    <li><a href="../index.html#products">Produk</a></li>
+                    <li><a href="../index.html#testimonials">Testimoni</a></li>
+                    <li><a href="../index.html#footer">Kontak</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Kontak</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Jl. Kebudayaan No. 123, Yogyakarta</p>
+                <p><i class="fas fa-envelope"></i> info@sanggultradisi.com</p>
+                <p><i class="fas fa-phone"></i> 0812-3456-7890</p>
+            </div>
+            <div class="footer-social">
+                <h3>Ikuti Kami</h3>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                </div>
             </div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <h2>Sanggul Tradisi</h2>
-                    <p>Melestarikan keindahan tradisional</p>
-                </div>
-                <div class="footer-links">
-                    <h3>Tautan</h3>
-                    <ul>
-                        <li><a href="index.html">Beranda</a></li>
-                        <li><a href="pages/about.html">Tentang Kami</a></li>
-                        <li><a href="pages/products.html">Produk</a></li>
-                        <li><a href="pages/gallery.html">Galeri</a></li>
-                        <li><a href="pages/contact.html">Kontak</a></li>
-                    </ul>
-                </div>
-                <div class="footer-contact">
-                    <h3>Kontak</h3>
-                    <p>Jl. Kebudayaan No. 123, Yogyakarta</p>
-                    <p>Email: info@sanggultradisi.com</p>
-                    <p>Telp: 081234567890</p>
-                </div>
-                <div class="footer-social">
-                    <h3>Sosial Media</h3>
-                    <div class="social-icons">
-                        <a href="#" class="social-icon">Instagram</a>
-                        <a href="#" class="social-icon">Facebook</a>
-                        <a href="#" class="social-icon">TikTok</a>
-                        <a href="#" class="social-icon">WhatsApp</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Sanggul Tradisi. Hak Cipta Dilindungi.</p>
-            </div>
+        <div class="footer-bottom">
+            <p>© 2025 <strong>Rois Sanggul</strong>. Hak Cipta Dilindungi.</p>
         </div>
-    </footer>
+    </div>
+</footer>
 
-    <script src="js/main.js"></script>
-    <script src="js/slider.js"></script>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/slider.js"></script>
 </body>
 </html>
