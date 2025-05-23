@@ -6,57 +6,280 @@
     <title>Produk - Rois Sanggul</title>
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/responsive.css">
-    <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/images/products/favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom Scrollbar for Modal Description */
+        .modal-description-container::-webkit-scrollbar {
+            width: 6px;
+        }
+        .modal-description-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 3px;
+        }
+        .modal-description-container::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 3px;
+        }
+        .modal-description-container::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        /* Consistent Product Card Alignment */
+        .product-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 120px; /* Fixed height for consistent alignment */
+        }
+        .product-info h3 {
+            flex-grow: 0;
+            min-height: 40px; /* Ensure name takes consistent space */
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .price {
+            flex-grow: 0;
+        }
+        .btn-tertiary {
+            flex-grow: 0;
+        }
+        /* Responsive Modal and Card Adjustments */
+        @media (max-width: 640px) {
+            .product-card {
+                width: 100%;
+                max-width: 200px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .product-container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 8px;
+            }
+            #product-modal {
+                align-items: center;
+                padding: 16px 0; /* Add vertical padding to avoid touching screen edges */
+            }
+            #product-modal > div {
+                max-width: 90%;
+                padding: 12px;
+            }
+            .modal-description-container {
+                max-height: 120px;
+            }
+        }
+        @media (min-width: 641px) {
+            .modal-description-container {
+                max-height: 150px;
+            }
+            #product-modal {
+                padding: 24px 0; /* Larger padding for desktop */
+            }
+        }
+    </style>
 </head>
-<body>
+<body class="bg-gray-100 font-poppins">
     <!-- Header Placeholder -->
     <div id="header-placeholder"></div>
 
     <!-- All Products Section -->
-    <section id="products" class="all-products">
-        <div class="container">
-            <div class="section-header">
-                <h2>Semua Produk</h2>
-                <p>Koleksi lengkap sanggul tradisional kami</p>
+    <section id="products" class="all-products py-8 sm:py-12">
+        <div class="container mx-auto px-4 max-w-[1600px]">
+            <div class="section-header text-center mb-6 sm:mb-8">
+                <h2 class="text-2xl sm:text-3xl font-semibold text-gray-800">Semua Produk</h2>
+                <p class="text-gray-600 mt-2 text-sm sm:text-base">Koleksi lengkap aksesoris dan pakaian tradisional kami</p>
             </div>
-            <div class="product-container">
-                <div class="product-card" id="sanggul-jawa">
-                    <div class="product-image">
-                        <img src="../assets/images/products/product-1.jpg" alt="Sanggul Jawa">
-                    </div>
-                    <div class="product-info">
-                        <h3>Sanggul Jawa</h3>
-                        <p>Sanggul tradisional dari Jawa dengan bentuk bulat dan indah</p>
-                        <span class="price">Rp 150.000</span>
-                        <a href="#sanggul-jawa" class="btn-tertiary">Detail</a>
+
+            <!-- Filter and Search -->
+            <div class="flex flex-col md:flex-row justify-between items-center mb-6 sm:mb-8 gap-4">
+                <!-- Search Bar -->
+                <div class="w-full md:w-1/3">
+                    <input 
+                        type="text" 
+                        id="product-search" 
+                        placeholder="Cari produk..." 
+                        class="w-full p-2 sm:p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm sm:text-base"
+                    >
+                </div>
+                <!-- Category Filter -->
+                <div class="w-full md:w-1/3">
+                    <select 
+                        id="category-filter" 
+                        class="w-full p-2 sm:p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm sm:text-base"
+                    >
+                        <option value="all">Semua Kategori</option>
+                        <option value="Aksesoris Rambut">Aksesoris Rambut</option>
+                        <option value="Aksesoris Tambahan">Aksesoris Tambahan</option>
+                        <option value="Aksesoris Bayi & Anak">Aksesoris Bayi & Anak</option>
+                        <option value="Set & Paket Aksesoris">Set & Paket Aksesoris</option>
+                        <option value="Pakaian Tradisional">Pakaian Tradisional</option>
+                        <option value="Alat Rambut">Alat Rambut</option>
+                        <option value="Buku & Alat Tulis Lainnya">Buku & Alat Tulis Lainnya</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Category Sections -->
+            <div id="category-sections">
+                <!-- Aksesoris Rambut -->
+                <div class="category-section mb-8 sm:mb-12" data-category="Aksesoris Rambut">
+                    <h3 class="text-xl sm:text-2xl font-semibold text-gray-800 mb-4">Aksesoris Rambut</h3>
+                    <div class="product-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-[6px] gap-y-2 sm:gap-y-4">
+                        <div class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 w-full sm:w-72 mx-auto" data-category="Aksesoris Rambut">
+                            <div class="product-image aspect-square">
+                                <img src="../assets/images/products/jepit-rambut.jpg" alt="Jepit Rambut Tradisional" class="w-full h-full object-cover">
+                            </div>
+                            <div class="product-info p-2 sm:p-3">
+                                <h3 class="text-sm sm:text-base font-medium text-gray-800">Jepit Rambut Tradisional</h3>
+                                <span class="price block text-sm sm:text-base font-semibold text-blue-600 mt-1 sm:mt-2">Rp 50.000</span>
+                                <button class="btn-tertiary inline-block mt-2 px-2 sm:px-3 py-1 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors text-xs sm:text-sm" onclick="showProductModal('Jepit Rambut Tradisional', 'Jepit rambut dengan motif tradisional Jawa. Produk ini dibuat dengan bahan berkualitas tinggi, memberikan kesan elegan dan cocok untuk acara formal maupun kasual.', 'Rp 50.000', '../assets/images/products/jepit-rambut.jpg')">Detail</button>
+                            </div>
+                        </div>
+                        <div class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 w-full sm:w-72 mx-auto" data-category="Aksesoris Rambut">
+                            <div class="product-image aspect-square">
+                                <img src="../assets/images/products/ikat-rambut.jpg" alt="Ikat Rambut Kain" class="w-full h-full object-cover">
+                            </div>
+                            <div class="product-info p-2 sm:p-3">
+                                <h3 class="text-sm sm:text-base font-medium text-gray-800">Ikat Rambut Kain</h3>
+                                <span class="price block text-sm sm:text-base font-semibold text-blue-600 mt-1 sm:mt-2">Rp 20.000</span>
+                                <button class="btn-tertiary inline-block mt-2 px-2 sm:px-3 py-1 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors text-xs sm:text-sm" onclick="showProductModal('Ikat Rambut Kain', 'Ikat rambut berbahan kain dengan motif bunga. Produk ini dirancang dengan bahan berkualitas tinggi, nyaman digunakan sehari-hari, dan cocok untuk berbagai gaya rambut. Motif bunga memberikan sentuhan elegan dan tradisional.', 'Rp 20.000', '../assets/images/products/ikat-rambut.jpg')">Detail</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="product-card" id="sanggul-sunda">
-                    <div class="product-image">
-                        <img src="../assets/images/products/product-2.jpg" alt="Sanggul Sunda">
-                    </div>
-                    <div class="product-info">
-                        <h3>Sanggul Sunda</h3>
-                        <p>Keanggunan khas Sunda dalam bentuk sanggul tradisional</p>
-                        <span class="price">Rp 175.000</span>
-                        <a href="#sanggul-sunda" class="btn-tertiary">Detail</a>
-                    </div>
-                </div>
-                <div class="product-card" id="sanggul-bali">
-                    <div class="product-image">
-                        <img src="../assets/images/products/product-3.jpg" alt="Sanggul Bali">
-                    </div>
-                    <div class="product-info">
-                        <h3>Sanggul Bali</h3>
-                        <p>Mewah dan eksotis, mencerminkan keindahan budaya Bali</p>
-                        <span class="price">Rp 200.000</span>
-                        <a href="#sanggul-bali" class="btn-tertiary">Detail</a>
+
+                <!-- Aksesoris Tambahan -->
+                <div class="category-section mb-8 sm:mb-12" data-category="Aksesoris Tambahan">
+                    <h3 class="text-xl sm:text-2xl font-semibold text-gray-800 mb-4">Aksesoris Tambahan</h3>
+                    <div class="product-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-[6px] gap-y-2 sm:gap-y-4">
+                        <div class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 w-full sm:w-40 mx-auto" data-category="Aksesoris Tambahan">
+                            <div class="product-image aspect-square">
+                                <img src="../assets/images/products/kalung-batik.jpg" alt="Kalung Batik" class="w-full h-full object-cover">
+                            </div>
+                            <div class="product-info p-2 sm:p-3">
+                                <h3 class="text-sm sm:text-base font-medium text-gray-800">Kalung Batik</h3>
+                                <span class="price block text-sm sm:text-base font-semibold text-blue-600 mt-1 sm:mt-2">Rp 80.000</span>
+                                <button class="btn-tertiary inline-block mt-2 px-2 sm:px-3 py-1 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors text-xs sm:text-sm" onclick="showProductModal('Kalung Batik', 'Kalung dengan motif batik khas Indonesia. Dibuat dengan detail halus, cocok untuk melengkapi penampilan tradisional Anda.', 'Rp 80.000', '../assets/images/products/kalung-batik.jpg')">Detail</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Aksesoris Bayi & Anak -->
+                <div class="category-section mb-8 sm:mb-12" data-category="Aksesoris Bayi & Anak">
+                    <h3 class="text-xl sm:text-2xl font-semibold text-gray-800 mb-4">Aksesoris Bayi & Anak</h3>
+                    <div class="product-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-[6px] gap-y-2 sm:gap-y-4">
+                        <div class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 w-full sm:w-40 mx-auto" data-category="Aksesoris Bayi & Anak">
+                            <div class="product-image aspect-square">
+                                <img src="../assets/images/products/bando-anak.jpg" alt="Bando Anak Motif Bunga" class="w-full h-full object-cover">
+                            </div>
+                            <div class="product-info p-2 sm:p-3">
+                                <h3 class="text-sm sm:text-base font-medium text-gray-800">Bando Anak Motif Bunga</h3>
+                                <span class="price block text-sm sm:text-base font-semibold text-blue-600 mt-1 sm:mt-2">Rp 30.000</span>
+                                <button class="btn-tertiary inline-block mt-2 px-2 sm:px-3 py-1 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors text-xs sm:text-sm" onclick="showProductModal('Bando Anak Motif Bunga', 'Bando lucu untuk anak dengan motif bunga. Nyaman dipakai dan aman untuk anak-anak.', 'Rp 30.000', '../assets/images/products/bando-anak.jpg')">Detail</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Set & Paket Aksesoris -->
+                <div class="category-section mb-8 sm:mb-12" data-category="Set & Paket Aksesoris">
+                    <h3 class="text-xl sm:text-2xl font-semibold text-gray-800 mb-4">Set & Paket Aksesoris</h3>
+                    <div class="product-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-[6px] gap-y-2 sm:gap-y-4">
+                        <div class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 w-full sm:w-40 mx-auto" data-category="Set & Paket Aksesoris">
+                            <div class="product-image aspect-square">
+                                <img src="../assets/images/products/paket-sanggul.jpg" alt="Paket Sanggul Komplit" class="w-full h-full object-cover">
+                            </div>
+                            <div class="product-info p-2 sm:p-3">
+                                <h3 class="text-sm sm:text-base font-medium text-gray-800">Paket Sanggul Komplit</h3>
+                                <span class="price block text-sm sm:text-base font-semibold text-blue-600 mt-1 sm:mt-2">Rp 250.000</span>
+                                <button class="btn-tertiary inline-block mt-2 px-2 sm:px-3 py-1 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors text-xs sm:text-sm" onclick="showProductModal('Paket Sanggul Komplit', 'Paket lengkap sanggul dan aksesoris pendukung, dirancang untuk penampilan tradisional yang memukau.', 'Rp 250.000', '../assets/images/products/paket-sanggul.jpg')">Detail</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pakaian Tradisional -->
+                <div class="category-section mb-8 sm:mb-12" data-category="Pakaian Tradisional">
+                    <h3 class="text-xl sm:text-2xl font-semibold text-gray-800 mb-4">Pakaian Tradisional</h3>
+                    <div class="product-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-[6px] gap-y-2 sm:gap-y-4">
+                        <div class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 w-full sm:w-40 mx-auto" data-category="Pakaian Tradisional">
+                            <div class="product-image aspect-square">
+                                <img src="../assets/images/products/baju-kebaya.jpg" alt="Baju Kebaya" class="w-full h-full object-cover">
+                            </div>
+                            <div class="product-info p-2 sm:p-3">
+                                <h3 class="text-sm sm:text-base font-medium text-gray-800">Baju Kebaya</h3>
+                                <span class="price block text-sm sm:text-base font-semibold text-blue-600 mt-1 sm:mt-2">Rp 300.000</span>
+                                <button class="btn-tertiary inline-block mt-2 px-2 sm:px-3 py-1 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors text-xs sm:text-sm" onclick="showProductModal('Baju Kebaya', 'Kebaya elegan dengan bordir tradisional, cocok untuk acara resmi dan memberikan sentuhan budaya Indonesia.', 'Rp 300.000', '../assets/images/products/baju-kebaya.jpg')">Detail</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alat Rambut -->
+                <div class="category-section mb-8 sm:mb-12" data-category="Alat Rambut">
+                    <h3 class="text-xl sm:text-2xl font-semibold text-gray-800 mb-4">Alat Rambut</h3>
+                    <div class="product-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-[6px] gap-y-2 sm:gap-y-4">
+                        <div class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 w-full sm:w-40 mx-auto" data-category="Alat Rambut">
+                            <div class="product-image aspect-square">
+                                <img src="../assets/images/products/sisir-tradisional.jpg" alt="Sisir Tradisional" class="w-full h-full object-cover">
+                            </div>
+                            <div class="product-info p-2 sm:p-3">
+                                <h3 class="text-sm sm:text-base font-medium text-gray-800">Sisir Tradisional</h3>
+                                <span class="price block text-sm sm:text-base font-semibold text-blue-600 mt-1 sm:mt-2">Rp 40.000</span>
+                                <button class="btn-tertiary inline-block mt-2 px-2 sm:px-3 py-1 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors text-xs sm:text-sm" onclick="showProductModal('Sisir Tradisional', 'Sisir kayu untuk menata rambut dengan rapi, dibuat dari bahan alami untuk kenyamanan maksimal.', 'Rp 40.000', '../assets/images/products/sisir-tradisional.jpg')">Detail</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Buku & Alat Tulis Lainnya -->
+                <div class="category-section mb-8 sm:mb-12" data-category="Buku & Alat Tulis Lainnya">
+                    <h3 class="text-xl sm:text-2xl font-semibold text-gray-800 mb-4">Buku & Alat Tulis Lainnya</h3>
+                    <div class="product-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-[6px] gap-y-2 sm:gap-y-4">
+                        <div class="product-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 w-full sm:w-40 mx-auto" data-category="Buku & Alat Tulis Lainnya">
+                            <div class="product-image aspect-square">
+                                <img src="../assets/images/products/buku-batik.jpg" alt="Buku Panduan Batik" class="w-full h-full object-cover">
+                            </div>
+                            <div class="product-info p-2 sm:p-3">
+                                <h3 class="text-sm sm:text-base font-medium text-gray-800">Buku Panduan Batik</h3>
+                                <span class="price block text-sm sm:text-base font-semibold text-blue-600 mt-1 sm:mt-2">Rp 100.000</span>
+                                <button class="btn-tertiary inline-block mt-2 px-2 sm:px-3 py-1 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors text-xs sm:text-sm" onclick="showProductModal('Buku Panduan Batik', 'Panduan lengkap tentang motif batik tradisional, memberikan wawasan mendalam tentang budaya dan seni batik Indonesia.', 'Rp 100.000', '../assets/images/products/buku-batik.jpg')">Detail</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- No Results Message -->
+            <div id="no-results" class="hidden text-center text-gray-600 mt-6 sm:mt-8 text-sm sm:text-base">
+                Tidak ada produk yang ditemukan.
             </div>
         </div>
     </section>
+
+    <!-- Product Detail Modal -->
+    <div id="product-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+        <div class="bg-white rounded-lg p-3 sm:p-4 max-w-[320px] sm:max-w-[384px] w-full mx-4">
+            <h2 id="modal-title" class="text-lg sm:text-xl font-semibold text-gray-800 mb-3"></h2>
+            <div class="aspect-square mb-3">
+                <img id="modal-image" src="" alt="" class="w-full h-full object-cover rounded-lg">
+            </div>
+            <div class="modal-description-container max-h-24 sm:max-h-36 overflow-y-auto scrollbar-thin mb-3">
+                <p id="modal-description" class="text-xs sm:text-sm text-gray-600"></p>
+            </div>
+            <p id="modal-price" class="text-sm sm:text-base font-semibold text-blue-600 mb-3"></p>
+            <div class="flex justify-between">
+                <a id="modal-buy" href="#" class="px-2 sm:px-3 py-1 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors text-xs sm:text-sm">Beli Sekarang</a>
+                <button id="modal-close" class="px-2 sm:px-3 py-1 bg-gray-300 text-gray-800 rounded-lg hover:bg-gray-400 transition-colors text-xs sm:text-sm">Tutup</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer Placeholder -->
     <div id="footer-placeholder"></div>
@@ -75,6 +298,86 @@
             .then(data => {
                 document.getElementById('footer-placeholder').innerHTML = data;
             });
+
+        // Filter and Search Functionality
+        const searchInput = document.getElementById('product-search');
+        const categoryFilter = document.getElementById('category-filter');
+        const categorySections = document.querySelectorAll('.category-section');
+        const productCards = document.querySelectorAll('.product-card');
+        const noResults = document.getElementById('no-results');
+
+        function filterProducts() {
+            const searchText = searchInput.value.toLowerCase();
+            const selectedCategory = categoryFilter.value;
+            let hasVisibleProducts = false;
+
+            // Handle category section visibility
+            categorySections.forEach(section => {
+                const sectionCategory = section.getAttribute('data-category');
+                if (selectedCategory === 'all' || sectionCategory === selectedCategory) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                    return; // Skip further processing for hidden sections
+                }
+
+                // Filter products within visible sections
+                const products = section.querySelectorAll('.product-card');
+                let hasVisibleProductsInSection = false;
+
+                products.forEach(card => {
+                    const productName = card.querySelector('h3').textContent.toLowerCase();
+                    if (productName.includes(searchText)) {
+                        card.style.display = 'block';
+                        hasVisibleProductsInSection = true;
+                        hasVisibleProducts = true;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                // Hide section heading if no products are visible in it
+                section.style.display = hasVisibleProductsInSection ? 'block' : 'none';
+            });
+
+            noResults.style.display = hasVisibleProducts ? 'none' : 'block';
+        }
+
+        function showProductModal(name, description, price, imageSrc) {
+            document.getElementById('modal-title').textContent = name;
+            document.getElementById('modal-description').textContent = description;
+            document.getElementById('modal-price').textContent = price;
+            document.getElementById('modal-image').src = imageSrc;
+            document.getElementById('modal-buy').href = `https://wa.me/+6281234567890?text=Saya%20ingin%20membeli%20${encodeURIComponent(name)}`;
+            document.getElementById('product-modal').classList.remove('hidden');
+        }
+
+        // Update showProductModal to use the button's onclick directly
+        productCards.forEach(card => {
+            const button = card.querySelector('.btn-tertiary');
+            button.addEventListener('click', () => {
+                const name = card.querySelector('h3').textContent;
+                const price = card.querySelector('.price').textContent;
+                const imageSrc = card.querySelector('img').src;
+                // Description is now only in the button's onclick attribute
+                const description = button.getAttribute('onclick').match(/'([^']*)'/g)[1].replace(/'/g, '');
+                showProductModal(name, description, price, imageSrc);
+            });
+        });
+
+        document.getElementById('modal-close').addEventListener('click', () => {
+            document.getElementById('product-modal').classList.add('hidden');
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('product-modal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('product-modal')) {
+                document.getElementById('product-modal').classList.add('hidden');
+            }
+        });
+
+        searchInput.addEventListener('input', filterProducts);
+        categoryFilter.addEventListener('change', filterProducts);
     </script>
 </body>
 </html>
